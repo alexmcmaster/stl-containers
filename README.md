@@ -36,13 +36,9 @@ perform the analysis.
 
 ### insert(end)
 
-### insert(random)
-
 ### erase(start)
 
 ### erase(end)
-
-### erase(random)
 
 ### clear()
 
