@@ -9,8 +9,7 @@
 
 using namespace std::placeholders;
 
-std::random_device g_rd;
-std::mt19937 g_rng(g_rd());
+extern std::mt19937 g_rng;
 
 static void fill_vector(std::vector<int>& v, int count) {
     v.clear();
@@ -44,7 +43,7 @@ void VectorAnalyzer::test(vector_func setup, vector_func preop,
 }
 
 void VectorAnalyzer::test_operator_brackets_random(int count) {
-    std::uniform_int_distribution<int> randindex(0, count);
+    std::uniform_int_distribution<int> randindex(0, count - 1);
     test(
         std::bind(fill_vector, _1, count),
         NOOP,
@@ -54,7 +53,7 @@ void VectorAnalyzer::test_operator_brackets_random(int count) {
 }
 
 void VectorAnalyzer::test_at_random(int count) {
-    std::uniform_int_distribution<int> randindex(0, count);
+    std::uniform_int_distribution<int> randindex(0, count - 1);
     test(
         std::bind(fill_vector, _1, count),
         NOOP,
