@@ -4,14 +4,14 @@
 
 #include "array_analyzer.h"
 
-#define NOOP [](std::array<BASETYPE, ARRAY_SIZE>& _a){}
+#define NOOP [](std::array<BASETYPE, ARRAYLEN>& _a){}
 
 using namespace std::placeholders;
 
 extern std::mt19937 g_rng;
 
-static void fill_array(std::array<BASETYPE, ARRAY_SIZE>& a, int count) {
-    count = ARRAY_SIZE;
+static void fill_array(std::array<BASETYPE, ARRAYLEN>& a, int count) {
+    count = ARRAYLEN;
     for (int i = 0; i < count; i++)
         a[i] = i;
 }
@@ -20,15 +20,15 @@ void ArrayAnalyzer::print_header() {
     std::cout << "init size,init max size,final size,final max size,duration_ns\n";
 }
 
-void ArrayAnalyzer::print_ckpt(std::array<BASETYPE, ARRAY_SIZE>& a) {
+void ArrayAnalyzer::print_ckpt(std::array<BASETYPE, ARRAYLEN>& a) {
     std::cout << a.size() << "," << a.max_size() << ",";
 }
 
 void ArrayAnalyzer::test(array_func setup, array_func preop,
                           array_func op, int count) {
-    count = ARRAY_SIZE;
+    count = ARRAYLEN;
     print_header();
-    std::array<BASETYPE, ARRAY_SIZE> a;
+    std::array<BASETYPE, ARRAYLEN> a;
     setup(a);
     for (int i = 0; i < count; i++) {
         print_ckpt(a);
@@ -42,23 +42,23 @@ void ArrayAnalyzer::test(array_func setup, array_func preop,
 }
 
 void ArrayAnalyzer::test_operator_brackets_random(int count) {
-    count = ARRAY_SIZE;
+    count = ARRAYLEN;
     std::uniform_int_distribution<BASETYPE> randindex(0, count - 1);
     test(
         std::bind(fill_array, _1, count),
         NOOP,
-        [&](std::array<BASETYPE, ARRAY_SIZE>& _a){_a[randindex(g_rng)];},
+        [&](std::array<BASETYPE, ARRAYLEN>& _a){_a[randindex(g_rng)];},
         count
     );
 }
 
 void ArrayAnalyzer::test_at_random(int count) {
-    count = ARRAY_SIZE;
+    count = ARRAYLEN;
     std::uniform_int_distribution<BASETYPE> randindex(0, count - 1);
     test(
         std::bind(fill_array, _1, count),
         NOOP,
-        [&](std::array<BASETYPE, ARRAY_SIZE>& _a){_a.at(randindex(g_rng));},
+        [&](std::array<BASETYPE, ARRAYLEN>& _a){_a.at(randindex(g_rng));},
         count
     );
 }

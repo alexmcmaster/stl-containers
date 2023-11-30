@@ -4,14 +4,14 @@
 
 #include "container_analyzer.h"
 
-#define ARRAY_SIZE 1000
+#define ARRAYLEN 1000
 
-class ArrayAnalyzer : public ContainerAnalyzer<std::array<BASETYPE, ARRAY_SIZE>> {
-    typedef std::function<void(std::array<BASETYPE, ARRAY_SIZE>&)> array_func;
+class ArrayAnalyzer : public ContainerAnalyzer<std::array<BASETYPE, ARRAYLEN>> {
+    typedef std::function<void(std::array<BASETYPE, ARRAYLEN>&)> array_func;
     virtual void test(array_func setup, array_func preop, array_func op,
                       int count);
     virtual void print_header();
-    virtual void print_ckpt(std::array<BASETYPE, ARRAY_SIZE>& a);
+    virtual void print_ckpt(std::array<BASETYPE, ARRAYLEN>& a);
 public:
     ArrayAnalyzer() = default;
     void test_operator_brackets_random(int count);
