@@ -4,12 +4,12 @@
 
 #include "container_analyzer.h"
 
-class VectorAnalyzer : public ContainerAnalyzer<std::vector<int>> {
-    typedef std::function<void(std::vector<int>&)> vector_func;
+class VectorAnalyzer : public ContainerAnalyzer<std::vector<BASETYPE>> {
+    typedef std::function<void(std::vector<BASETYPE>&)> vector_func;
     virtual void test(vector_func setup, vector_func preop, vector_func op,
                       int count);
     virtual void print_header();
-    virtual void print_ckpt(std::vector<int>& v);
+    virtual void print_ckpt(std::vector<BASETYPE>& v);
 public:
     VectorAnalyzer() = default;
     void test_operator_brackets_random(int count);

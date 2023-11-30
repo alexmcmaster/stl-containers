@@ -4,6 +4,7 @@
 
 #include "array_analyzer.h"
 #include "vector_analyzer.h"
+#include "deque_analyzer.h"
 
 #define DEFAULT_COUNT 1000
 
@@ -20,6 +21,7 @@ unordered_set, map, unordered_map\n";
     std::cerr << "tests:\n";
     std::cerr << " vector: " << VectorAnalyzer::tests << "\n";
     std::cerr << " array: " << ArrayAnalyzer::tests << "\n";
+    std::cerr << " deque: " << DequeAnalyzer::tests << "\n";
     return 1;
 }
 
@@ -59,6 +61,24 @@ void test_vector(const std::string test_name, int count) {
         std::cerr << "vector " << test_name << " not supported\n";
 }
 
+void test_deque(const std::string test_name, int count) {
+    DequeAnalyzer da;
+    if (test_name == "operator_brackets_random")
+        da.test_operator_brackets_random(count);
+    else if (test_name == "at_random")
+        da.test_at_random(count);
+    else if (test_name == "push_back")
+        da.test_push_back(count);
+    else if (test_name == "push_front")
+        da.test_push_back(count);
+    else if (test_name == "pop_back")
+        da.test_push_back(count);
+    else if (test_name == "pop_front")
+        da.test_push_back(count);
+    else
+        std::cerr << "deque " << test_name << " not supported\n";
+}
+
 int main(int argc, char *argv[]) {
     if (argc < 3)
         return usage(argc, argv);
@@ -71,6 +91,8 @@ int main(int argc, char *argv[]) {
         test_array(test_name, count);
     else if (container_name == "vector")
         test_vector(test_name, count);
+    else if (container_name == "deque")
+        test_deque(test_name, count);
     else
         std::cerr << container_name << " not supported\n";
     return 0;

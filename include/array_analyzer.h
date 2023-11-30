@@ -4,15 +4,14 @@
 
 #include "container_analyzer.h"
 
-// FIXME: how to configure array size via cl?
 #define ARRAY_SIZE 1000
 
-class ArrayAnalyzer : public ContainerAnalyzer<std::array<int, ARRAY_SIZE>> {
-    typedef std::function<void(std::array<int, ARRAY_SIZE>&)> array_func;
+class ArrayAnalyzer : public ContainerAnalyzer<std::array<BASETYPE, ARRAY_SIZE>> {
+    typedef std::function<void(std::array<BASETYPE, ARRAY_SIZE>&)> array_func;
     virtual void test(array_func setup, array_func preop, array_func op,
                       int count);
     virtual void print_header();
-    virtual void print_ckpt(std::array<int, ARRAY_SIZE>& a);
+    virtual void print_ckpt(std::array<BASETYPE, ARRAY_SIZE>& a);
 public:
     ArrayAnalyzer() = default;
     void test_operator_brackets_random(int count);

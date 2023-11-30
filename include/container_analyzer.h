@@ -2,6 +2,9 @@
 
 #include <chrono>
 
+#define BASETYPE int
+#define FIXEDNUM 85
+
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::duration_cast;
