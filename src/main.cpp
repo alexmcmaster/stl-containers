@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
     if (argc < 3)
         return usage(argc, argv);
     int count = DEFAULT_COUNT;
-    if (argc >= 4)
+    if (argc == 4)
         count = std::stoi(argv[3]);
     const std::string container_name(argv[1]);
     const std::string test_name(argv[2]);
