@@ -22,6 +22,7 @@ perform the analysis.
 
 ### at(random)
 
+
 ## vector
 
 ### operator[random]
@@ -44,16 +45,43 @@ perform the analysis.
 
 ### clear(), shrink\_to\_fit()
 
+
 ## deque
+
+### operator[random]
+
+### at(random)
+
+### push\_back()
+
+### push\_front()
+
+### pop\_back()
+
+### pop\_front()
+
+### insert(middle)
+
+### erase(middle)
+
+### clear()
+
+### clear(), shrink\_to\_fit()
+
 
 ## list
 
+
 ## priority\_queue
+
 
 ## set
 
+
 ## unordered\_set
 
+
 ## map
+
 
 ## unordered\_map
