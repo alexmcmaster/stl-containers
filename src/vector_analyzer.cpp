@@ -31,8 +31,8 @@ void VectorAnalyzer::test(vector_func setup, vector_func preop,
     std::vector<BASETYPE> v;
     setup(v);
     for (int i = 0; i < count; i++) {
-        print_ckpt(v);
         preop(v);
+        print_ckpt(v);
         auto t1 = high_resolution_clock::now();
         op(v);
         auto t2 = high_resolution_clock::now();

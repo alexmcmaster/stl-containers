@@ -30,8 +30,8 @@ void DequeAnalyzer::test(deque_func setup, deque_func preop,
     std::deque<BASETYPE> d;
     setup(d);
     for (int i = 0; i < count; i++) {
-        print_ckpt(d);
         preop(d);
+        print_ckpt(d);
         auto t1 = high_resolution_clock::now();
         op(d);
         auto t2 = high_resolution_clock::now();

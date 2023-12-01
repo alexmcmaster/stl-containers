@@ -31,8 +31,8 @@ void ArrayAnalyzer::test(array_func setup, array_func preop,
     std::array<BASETYPE, ARRAYLEN> a;
     setup(a);
     for (int i = 0; i < count; i++) {
-        print_ckpt(a);
         preop(a);
+        print_ckpt(a);
         auto t1 = high_resolution_clock::now();
         op(a);
         auto t2 = high_resolution_clock::now();
