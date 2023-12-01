@@ -95,3 +95,40 @@ void DequeAnalyzer::test_pop_front(int count) {
         count
     );
 }
+
+void DequeAnalyzer::test_insert_middle(int count) {
+    test(
+        NOOP,
+        NOOP,
+        [](std::deque<BASETYPE>& _d){_d.insert(_d.begin() + (_d.size() / 2),
+                                              FIXEDNUM);},
+        count
+    );
+}
+
+void DequeAnalyzer::test_erase_middle(int count) {
+    test(
+        std::bind(fill_deque, _1, count),
+        NOOP,
+        [](std::deque<BASETYPE>& _d){_d.erase(_d.begin() + (_d.size() / 2));},
+        count
+    );
+}
+
+void DequeAnalyzer::test_clear(int count) {
+    test(
+        NOOP,
+        std::bind(fill_deque, _1, count),
+        [](std::deque<BASETYPE>& _d){_d.clear();},
+        count
+    );
+}
+
+void DequeAnalyzer::test_clear_and_shrink_to_fit(int count) {
+    test(
+        NOOP,
+        std::bind(fill_deque, _1, count),
+        [](std::deque<BASETYPE>& _d){_d.clear(); _d.shrink_to_fit();},
+        count
+    );
+}

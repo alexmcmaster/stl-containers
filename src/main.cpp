@@ -75,6 +75,14 @@ void test_deque(const std::string test_name, int count) {
         da.test_push_back(count);
     else if (test_name == "pop_front")
         da.test_push_back(count);
+    else if (test_name == "insert_middle")
+        da.test_insert_middle(count);
+    else if (test_name == "erase_middle")
+        da.test_erase_middle(count);
+    else if (test_name == "clear")
+        da.test_clear(count);
+    else if (test_name == "clear_and_shrink_to_fit")
+        da.test_clear_and_shrink_to_fit(count);
     else
         std::cerr << "deque " << test_name << " not supported\n";
 }
