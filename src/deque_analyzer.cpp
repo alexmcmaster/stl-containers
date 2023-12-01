@@ -101,7 +101,7 @@ void DequeAnalyzer::test_insert_middle(int count) {
         NOOP,
         NOOP,
         [](std::deque<BASETYPE>& _d){_d.insert(_d.begin() + (_d.size() / 2),
-                                              FIXEDNUM);},
+                                               FIXEDNUM);},
         count
     );
 }

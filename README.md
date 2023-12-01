@@ -71,6 +71,24 @@ perform the analysis.
 
 ## list
 
+### front()
+
+### back()
+
+### push\_back()
+
+### push\_front()
+
+### pop\_back()
+
+### pop\_front()
+
+### insert(middle)
+
+### erase(middle)
+
+### clear()
+
 
 ## priority\_queue
 

@@ -5,6 +5,7 @@
 #include "array_analyzer.h"
 #include "vector_analyzer.h"
 #include "deque_analyzer.h"
+#include "list_analyzer.h"
 
 #define DEFAULT_COUNT 1000
 
@@ -87,6 +88,30 @@ void test_deque(const std::string test_name, int count) {
         std::cerr << "deque " << test_name << " not supported\n";
 }
 
+void test_list(const std::string test_name, int count) {
+    ListAnalyzer la;
+    if (test_name == "front")
+        la.test_front(count);
+    else if (test_name == "back")
+        la.test_back(count);
+    else if (test_name == "push_back")
+        la.test_push_back(count);
+    else if (test_name == "push_front")
+        la.test_push_front(count);
+    else if (test_name == "pop_back")
+        la.test_pop_back(count);
+    else if (test_name == "pop_front")
+        la.test_pop_front(count);
+    else if (test_name == "insert_middle")
+        la.test_insert_middle(count);
+    else if (test_name == "erase_middle")
+        la.test_erase_middle(count);
+    else if (test_name == "clear")
+        la.test_clear(count);
+    else
+        std::cerr << "list " << test_name << " not supported\n";
+}
+
 int main(int argc, char *argv[]) {
     if (argc < 3)
         return usage(argc, argv);
@@ -101,6 +126,8 @@ int main(int argc, char *argv[]) {
         test_vector(test_name, count);
     else if (container_name == "deque")
         test_deque(test_name, count);
+    else if (container_name == "list")
+        test_list(test_name, count);
     else
         std::cerr << container_name << " not supported\n";
     return 0;
